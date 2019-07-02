@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -22,10 +23,11 @@ from django.contrib.auth.views import LoginView
 from src.interface.views import editProfile, index
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(r'^admin/', admin.site.urls),
     path('', index, name='home'),
-    path('login/', LoginView.as_view(template_name = 'login.html'), name='login'),
-    path('editprofile/', editProfile, name='editProfile'),
+    path(r'^login/', LoginView.as_view(template_name = 'login.html'), name='login'),
+    path(r'^editprofile/', editProfile, name='editProfile'),
+    url(r'^usuarios/', include(('src.users.urls', 'usuarios'), namespace='usuarios')),
 ]
 
 if settings.DEBUG:

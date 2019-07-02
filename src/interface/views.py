@@ -1,8 +1,12 @@
 from django.shortcuts import render
-
+from src.users.models import DataUser
 # Create your views here.
 def index(request):
-    return render(request, "index.html" , {})
+    
+    
+    dataUser = DataUser.objects.all()
+    contexto = {'dataUser' : dataUser}
+    return render(request, 'index.html', contexto)
 
 
 

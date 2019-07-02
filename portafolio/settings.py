@@ -80,11 +80,8 @@ WSGI_APPLICATION = 'portafolio.wsgi.application'
 
 DATABASES = {
      'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'senaApp',
-        'LOCALHOST': '27017',
-        'USER': 'admin',
-        'PASSWORD': 'mongodb',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -122,10 +119,10 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images)s
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_files')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 LOGIN_REDIRECT_URL = '/'
